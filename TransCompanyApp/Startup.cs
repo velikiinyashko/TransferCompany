@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+//using MySql.Data.EntityFrameworkCore;
+using TransCompanyApp.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TransCompanyApp
 {
@@ -22,6 +25,8 @@ namespace TransCompanyApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddDbContext<OrderContext>(options =>
+            options.UseSqlServer("devbase"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

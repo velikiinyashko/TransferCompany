@@ -10,9 +10,17 @@ namespace TransCompanyApp.Controllers
 {
     public class HomeController : Controller
     {
+        OrderContext db;
+
+        public HomeController(OrderContext context)
+        {
+            db = context;
+            //db.Database.EnsureCreated();
+        }
+
         public IActionResult Index()
         {
-            return View();
+            return View(db.Orders.ToList());
         }
 
         public IActionResult About()
