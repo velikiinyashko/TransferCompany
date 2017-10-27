@@ -25,8 +25,9 @@ namespace TransCompanyApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<OrderContext>(options =>
-            options.UseSqlServer("devbase"));
+            var ConnString = @"Server=10.10.0.117;User id=sa;Password=Alex vs spider00;Database=Orders;";
+            services.AddDbContext<Models.BaseContext>(options =>
+            options.UseSqlServer(ConnString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +50,9 @@ namespace TransCompanyApp
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "Dashboard",
+                    template: "{controller=Dashboard}/{action=Index}/{id?}");
             });
         }
     }

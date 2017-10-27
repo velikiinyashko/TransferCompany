@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using TransCompanyApp.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using System.Net;
 
 namespace TransCompanyApp
 {
@@ -22,6 +24,14 @@ namespace TransCompanyApp
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseKestrel(options =>
+                {
+                    options.Limits.MaxConcurrentConnections = 100;
+                    options.Limits.MaxRequestBodySize = 10 * 1024;
+                    options.Limits.MinRequestBodyDataRate = new MinDataRate(bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
+                    options.Limits.MinResponseDataRate = new MinDataRate(bytesPerSecond: 100, gracePeriod: TimeSpan.FromSeconds(10));
+                    options.Listen(IPAddress.Parse("0.0.0.0"), 5000);
+                })
                 .Build();
     }
 }

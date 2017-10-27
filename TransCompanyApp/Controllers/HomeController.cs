@@ -10,12 +10,11 @@ namespace TransCompanyApp.Controllers
 {
     public class HomeController : Controller
     {
-        OrderContext db;
+        BaseContext db;
 
-        public HomeController(OrderContext context)
+        public HomeController(BaseContext context)
         {
             db = context;
-            //db.Database.EnsureCreated();
         }
 
         public IActionResult Index()
@@ -40,6 +39,19 @@ namespace TransCompanyApp.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Index(Order order)
+        {
+            db.Orders.Add(order);
+            db.SaveChanges();
+            return View(db.Orders.ToList());
         }
     }
 }

@@ -10,18 +10,39 @@ using TransCompanyApp.Models;
 
 namespace TransCompanyApp.Migrations
 {
-    [DbContext(typeof(OrderContext))]
-    [Migration("20171021061617_initial")]
-    partial class initial
+    [DbContext(typeof(BaseContext))]
+    partial class BaseContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("TransCompanyApp.Models.Order", b =>
+            modelBuilder.Entity("TransCompanyApp.Models.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Region");
+
+                    b.Property<string>("Telephone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
+                });
+
+            modelBuilder.Entity("TransCompanyApp.Models.Driver", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -30,7 +51,29 @@ namespace TransCompanyApp.Migrations
 
                     b.Property<string>("Surname");
 
+                    b.Property<string>("Telephone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Drivers");
+                });
+
+            modelBuilder.Entity("TransCompanyApp.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Phone");
+
+                    b.Property<int>("Status");
+
+                    b.Property<string>("Surname");
+
                     b.Property<int>("TariffId");
+
+                    b.Property<DateTime>("TimeCreate");
 
                     b.HasKey("Id");
 
