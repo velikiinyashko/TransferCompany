@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+@using TransCompanyApp.Models
+
+@*Model IEnumerable<tariff>*@
+<div class="container">
+    <div class="row">
+        @{
+            await Html.RenderPartialAsync("_board");
+        }
+    </div>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model)
+            {
+                    <tr>
+
+                        <th scope="row">@i.Id</th>
+                        <td>@i.TariffName</td>
+                        <td>@i.PricePerKm</td>
+                        <td>
+                            <form asp-action="Edite" asp-controller="Dashboard" asp-route-id="@i.Id" method="post">
+                                <input type="submit" class="btn btn-primary" value="Изменить" />
+                            </form>
+                        </td>
+                        <td>
+                            <form asp-action="Delete" asp-controller="Dashboard" asp-route-id="@i.Id" method="post">
+                                <input type="submit" class="btn btn-primary" value="Удалить" />
+                            </form>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @using (Html.BeginForm("create", "dashboard", FormMethod.Post))
+    {
+        <div class="form-group">
+            <label class="form-control-label">Имя</label>
+            <input class="form-control" type="text" name="TariffName" placeholder="Имя" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label">Стоимость километра</label>
+            <input class="form-control" type="number" name="PricePerKm" placeholder="Стоимость" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="form-control btn btn-primary" value="Создать тариф" />
+        </div>
+    }
+</div>

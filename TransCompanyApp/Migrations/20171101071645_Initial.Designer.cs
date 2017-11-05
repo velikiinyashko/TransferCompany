@@ -11,8 +11,8 @@ using TransCompanyApp.Models;
 namespace TransCompanyApp.Migrations
 {
     [DbContext(typeof(BaseContext))]
-    [Migration("20171026124846_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20171101071645_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,13 +64,17 @@ namespace TransCompanyApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<string>("Phone");
 
                     b.Property<int>("Status");
 
-                    b.Property<string>("Surname");
+                    b.Property<string>("Surname")
+                        .IsRequired();
 
                     b.Property<int>("TariffId");
 
@@ -87,6 +91,8 @@ namespace TransCompanyApp.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("PricePerKm");
 
                     b.Property<string>("TariffName");
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <meta name="theme-color" content="#909090" />
-    <title>@ViewData["Title"] - Dashboard</title>
+    <title>@ViewData["Title"] Конфигуратор</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
-<body style="background-color:#212121">
+<body class="bg-dark">
     <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-warning">
         <a class="navbar-brand" href="~/">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,12 +30,15 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
             <ul class="nav navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">test</a>
+                    <a class="nav-link" asp-action="tariffed" asp-controller="dashboard">Тариф</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" asp-action="orders" asp-controller="dashboard">Заказы</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div class="container body-content" style="color:white">
+    <div class="container body-content bg-dark"> @*style="color:white"*@ 
         <br />
         @RenderBody()
 

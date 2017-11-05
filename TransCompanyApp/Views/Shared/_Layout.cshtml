@@ -24,14 +24,14 @@
 @*<body style="background-color:#BEBEBE">*@
 <body style="background-image:url(/images/white-brick-wall-texture.jpg);">
     <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-primary">
-        <a class="navbar-brand" asp-action="Index" asp-controller="Home">Home</a>
+        <a class="navbar-brand" asp-action="Index" asp-controller="web">Главная</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
             <ul class="nav navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="~/">Трансфер</a>
+                    <a class="nav-link" asp-action="order">Трансфер</a>
                 </li>
                 <li class="nav-item active dropdown">
                     <a class="nav-link dropdown-toggle" asp-action="Index" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Аренда авто</a>
@@ -41,25 +41,28 @@
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Авто под выкуп</a>
+                    <a class="nav-link dropdown-toggle" asp-action="Index" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Авто под выкуп</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Новый автомобиль</a>
-                        <a class="dropdown-item" href="#">Автомобиль с пробегом</a>
+                        <a class="dropdown-item" asp-action="Index">Новый автомобиль</a>
+                        <a class="dropdown-item" asp-action="Index">Автомобиль с пробегом</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Для таксистов</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Получить лицензию</a>
-                        <a class="dropdown-item" href="#">Подключаем к Yandex</a>
-                        <a class="dropdown-item" href="#">Подключаем к Uber</a>
+                        <a class="dropdown-item" asp-action="Index">Получить лицензию</a>
+                        <a class="dropdown-item" asp-action="Index">Подключаем к Yandex</a>
+                        <a class="dropdown-item" asp-action="Index">Подключаем к Uber</a>
                     </div>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="~/Home/About">Контакты</a>
+                    <a class="nav-link" asp-action="about">Контакты</a>
                 </li>
                 <li>
-                    <a class="nav-link active" href="~/dashboard/">Configure</a>
+                    <a class="nav-link active" asp-controller="dashboard" asp-action="index">Configure</a>
+                </li>
+                <li>
+                    <a class="nav-link active" asp-controller="Cp" asp-action="Index">Личный кабинет</a>
                 </li>
             </ul>
         </div>
@@ -89,6 +92,37 @@
                         <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir" data-counter=""></div>
                     </div>
                 </div>
+                <!-- Yandex.Metrika counter -->
+                <script type="text/javascript">
+                    (function (d, w, c) {
+                        (w[c] = w[c] || []).push(function () {
+                            try {
+                                w.yaCounter46472058 = new Ya.Metrika({
+                                    id: 46472058,
+                                    clickmap: true,
+                                    trackLinks: true,
+                                    accurateTrackBounce: true,
+                                    webvisor: true,
+                                    trackHash: true,
+                                    ut: "noindex"
+                                });
+                            } catch (e) { }
+                        });
+
+                        var n = d.getElementsByTagName("script")[0],
+                            s = d.createElement("script"),
+                            f = function () { n.parentNode.insertBefore(s, n); };
+                        s.type = "text/javascript";
+                        s.async = true;
+                        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+                        if (w.opera == "[object Opera]") {
+                            d.addEventListener("DOMContentLoaded", f, false);
+                        } else { f(); }
+                    })(document, window, "yandex_metrika_callbacks");
+                </script>
+                <noscript><div><img src="https://mc.yandex.ru/watch/46472058?ut=noindex" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+                <!-- /Yandex.Metrika counter -->
             }
         </footer>
     </div>

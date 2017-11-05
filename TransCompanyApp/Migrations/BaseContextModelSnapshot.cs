@@ -63,13 +63,17 @@ namespace TransCompanyApp.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<string>("Phone");
 
                     b.Property<int>("Status");
 
-                    b.Property<string>("Surname");
+                    b.Property<string>("Surname")
+                        .IsRequired();
 
                     b.Property<int>("TariffId");
 
@@ -86,6 +90,8 @@ namespace TransCompanyApp.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("PricePerKm");
 
                     b.Property<string>("TariffName");
 

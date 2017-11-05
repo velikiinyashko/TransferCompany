@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,11 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-//using MySql.Data.EntityFrameworkCore;
-using TransCompanyApp.Models;
-using Microsoft.EntityFrameworkCore;
 
-namespace TransCompanyApp
+namespace TransWebApp
 {
     public class Startup
     {
@@ -25,9 +22,6 @@ namespace TransCompanyApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            var ConnString = @"Server=10.10.0.117;User id=sa;Password=Alex vs spider00;Database=TransWebApp;";
-            services.AddDbContext<Models.BaseContext>(options =>
-            options.UseSqlServer(ConnString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +34,7 @@ namespace TransCompanyApp
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
             }
 
             app.UseStaticFiles();
@@ -49,13 +43,7 @@ namespace TransCompanyApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Web}/{action=Index}/{id?}");
-                routes.MapRoute(
-                    name: "Dashboard",
-                    template: "{controller=Dashboard}/{action=Index}/{id?}");
-                routes.MapRoute(
-                    name: "PrivateOffice",
-                    template: "{controller=Cp}/{action=Index}/{id?}");
+                    template: "{controller}/{action=Index}/{id?}");
             });
         }
     }

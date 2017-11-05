@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>@ViewData["Title"] - Главная</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/site.js"></script>
+</head>
+<body style="background:#7f9298">
+    <nav class="navbar fixed-top navbar-expand-md navbar-dark" style="background:#ffc952">
+        <a class="navbar-brand" asp-action="Index" asp-controller="Web">Главная</a>
+    </nav>
+    <div class="container body-content">
+        <br />
+        @RenderBody();
+    </div>
+</body>
+</html>
