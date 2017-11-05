@@ -12,6 +12,9 @@ namespace TransCompanyApp.Models
         public DbSet<Tariff> Tariffs { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Company> Companys { get; set; }
+        public DbSet<billing.Client> Clients { get; set; }
 
         public BaseContext(DbContextOptions<BaseContext> options) : base(options)
         {

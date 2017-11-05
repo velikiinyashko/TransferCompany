@@ -11,8 +11,8 @@ using TransCompanyApp.Models;
 namespace TransCompanyApp.Migrations
 {
     [DbContext(typeof(BaseContext))]
-    [Migration("20171101071645_Initial")]
-    partial class Initial
+    [Migration("20171105170153_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,87 @@ namespace TransCompanyApp.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.0-rtm-26452")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("TransCompanyApp.Models.Account", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<byte>("Avatar");
+
+                    b.Property<int>("CompanyId");
+
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasMaxLength(16);
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(32);
+
+                    b.Property<string>("Phone")
+                        .IsRequired();
+
+                    b.Property<string>("Role");
+
+                    b.Property<string>("Surname");
+
+                    b.Property<string>("Token")
+                        .IsRequired();
+
+                    b.Property<bool>("Verificate");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Accounts");
+                });
+
+            modelBuilder.Entity("TransCompanyApp.Models.billing.Client", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("TransCompanyApp.Models.Company", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<int>("BIK");
+
+                    b.Property<string>("Country");
+
+                    b.Property<int>("INN");
+
+                    b.Property<int>("KPP");
+
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<int>("OGRN");
+
+                    b.Property<string>("PostIndex");
+
+                    b.Property<string>("Sity")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companys");
+                });
 
             modelBuilder.Entity("TransCompanyApp.Models.Contact", b =>
                 {
@@ -99,6 +180,14 @@ namespace TransCompanyApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tariffs");
+                });
+
+            modelBuilder.Entity("TransCompanyApp.Models.Account", b =>
+                {
+                    b.HasOne("TransCompanyApp.Models.Company", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TransCompanyApp.Models.Order", b =>

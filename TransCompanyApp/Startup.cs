@@ -48,14 +48,11 @@ namespace TransCompanyApp
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Web}/{action=Index}/{id?}");
-                routes.MapRoute(
-                    name: "Dashboard",
-                    template: "{controller=Dashboard}/{action=Index}/{id?}");
-                routes.MapRoute(
-                    name: "PrivateOffice",
-                    template: "{controller=Cp}/{action=Index}/{id?}");
             });
         }
     }

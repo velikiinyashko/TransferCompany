@@ -1,39 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using TransCompanyApp.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace TransCompanyApp.Controllers
+namespace TransCompanyApp.Areas.Dashboard.Controllers
 {
-    public class DashboardController : Controller
+    [Area("Dashboard")]
+    public class TariffController : Controller
     {
         private BaseContext _db;
 
-        public DashboardController(BaseContext context)
+        public TariffController(BaseContext context)
         {
             _db = context;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Configure()
-        {
-            return View(_db.Contacts.ToList());
-        }
-
-        public async Task<IActionResult> Orders()
-        {
-            return View(await _db.Orders.ToListAsync());
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Tariffed()
+        public async Task<IActionResult> Index()
         {
             return View(await _db.Tariffs.ToListAsync());
         }
@@ -45,19 +30,19 @@ namespace TransCompanyApp.Controllers
             {
                 _db.Tariffs.Add(tariff);
                 _db.SaveChanges();
-                return RedirectToAction("Tariffed");
+                return RedirectToAction("index");
             }
-            return RedirectToAction("Tariffed");
+            return RedirectToAction("index");
         }
 
         [HttpGet]
         [ActionName("Delete")]
         public async Task<IActionResult> ConfirmDelete(int? id)
         {
-            if(id != null)
+            if (id != null)
             {
                 Tariff tariff = await _db.Tariffs.FirstOrDefaultAsync(p => p.Id == id);
-                if(tariff != null)
+                if (tariff != null)
                 {
                     return View(tariff);
                 }
@@ -68,10 +53,10 @@ namespace TransCompanyApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(int? id)
         {
-            if(id != null)
+            if (id != null)
             {
                 Tariff tariff = await _db.Tariffs.FirstOrDefaultAsync(p => p.Id == id);
-                if(tariff != null)
+                if (tariff != null)
                 {
                     _db.Tariffs.Remove(tariff);
                     await _db.SaveChangesAsync();

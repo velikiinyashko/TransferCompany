@@ -9,13 +9,13 @@ using TransCompanyApp.ViewModel;
 
 namespace TransCompanyApp.Controllers
 {
-    public class WebController : Controller
+    public class HomeController : Controller
     {
         private BaseContext _db;
         private List<Tariff> _tariffs;
         private List<Order> _orders;
 
-        public WebController(BaseContext context)
+        public HomeController(BaseContext context)
         {
             _db = context;
             _tariffs = _db.Tariffs.ToList();

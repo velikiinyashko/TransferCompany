@@ -30,7 +30,7 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
             <ul class="nav navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" asp-action="tariffed" asp-controller="dashboard">Тариф</a>
+                    <a class="nav-link" asp-area="Dashboard" asp-action="Index" asp-controller="Tariff">Тариф</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" asp-action="orders" asp-controller="dashboard">Заказы</a>
@@ -38,7 +38,7 @@
             </ul>
         </div>
     </nav>
-    <div class="container body-content bg-dark"> @*style="color:white"*@ 
+    <div class="container body-content bg-dark" style="color:white"> 
         <br />
         @RenderBody()
 
