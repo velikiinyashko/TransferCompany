@@ -1,8 +1,25 @@
-﻿
+﻿@model TransCompanyApp.ViewModel.LoginViewModel
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_Cp.cshtml";
 }
 
 <h2>Login</h2>
-
+<div class="form-group">
+    <form asp-action="login" asp-controller="home" asp-antiforgery="true">
+        <div class="form-group">
+            <label class="form-control-label" asp-for="Name">Имя пользователя</label>
+            <input class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" asp-for="Password">Пароль</label>
+            <input class="form-control" type="password" asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Войти" />
+            <input type="button" class="btn btn-primary" asp-action="Register" asp-controller="Home" value="Зарегистрироваться" />
+        </div>
+    </form>
+</div>

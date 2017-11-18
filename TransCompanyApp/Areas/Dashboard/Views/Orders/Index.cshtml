@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Cp.cshtml";
+}
+<h2>Заказы</h2>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Дата</th>
+                <th>От куда</th>
+                <th>Куда</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Телефон</th>
+                <th>E-mail</th>
+                <th>Статус</th>
+                <th>Пользователь</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td>@i.TimeCreate</td>
+                    <td>@i.Address</td>
+                    <td></td>
+                    <td>@i.Name</td>
+                    <td>@i.Surname</td>
+                    <td>@i.Phone</td>
+                    <td>@i.Email</td>
+                    <td>@i.Status</td>
+                    <td>@i.User</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

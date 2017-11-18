@@ -1,8 +1,40 @@
-﻿
+﻿@using TransCompanyApp.ViewModel;
+@model TransCompanyApp.ViewModel.RegisterViewModel
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_Cp.cshtml";
 }
 
 <h2>Register</h2>
-
+<div class="form-group">
+    <form asp-action="register" asp-controller="home" asp-antiforgery="true">
+        <div class="form-group">
+            <label class="form-control-label" asp-for="Login"></label>
+            <input class="form-control" asp-for="Login" type="text" />
+            <span asp-validation-for="Login"></span>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" asp-for="Email"></label>
+            <input class="form-control" type="email" asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" asp-for="Phone"></label>
+            <input class="form-control" type="tel" asp-for="Phone" />
+            <span asp-validation-for="Phone"></span>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" asp-for="Password"></label>
+            <input class="form-control" type="password" asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" asp-for="ConfirmPassword"></label>
+            <input class="form-control" type="password" asp-for="ConfirmPassword" />
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
+        <div class="form-control">
+            <input class="btn btn-primary" type="submit" value="Зарегистрироваться" />
+        </div>
+    </form>
+</div>

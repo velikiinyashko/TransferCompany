@@ -60,7 +60,7 @@ namespace TransCompanyApp.Areas.Dashboard.Controllers
                 {
                     _db.Tariffs.Remove(tariff);
                     await _db.SaveChangesAsync();
-                    return RedirectToAction("Tariffed");
+                    return RedirectToAction(actionName: "index");
                 }
             }
             return NotFound();

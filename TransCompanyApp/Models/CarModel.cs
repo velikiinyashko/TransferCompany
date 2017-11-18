@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 
 namespace TransCompanyApp.Models
 {
-    public partial class Driver
+    public class CarModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Telephone { get; set; }
 
-
-
+        public int? CarManufactureId { get; set; }
+        public CarManufacture Manufacture { get; set; }
     }
 }
