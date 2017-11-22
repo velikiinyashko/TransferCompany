@@ -69,22 +69,50 @@ namespace TransCompanyApp.Controllers
             return View();
         }
 
-        [HttpGet]
-        public IActionResult Create(int? OrderId)
+        //[HttpGet]
+        //public IActionResult Create(int? OrderId)
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public IActionResult Create(Order order)
+        //{
+        //    if (order != null)
+        //    {
+        //        _db.Orders.Add(order);
+        //        _db.SaveChanges();
+        //        return RedirectToAction("Order");
+        //    }
+        //    return RedirectToAction("Order");
+        //}
+
+        public async Task<IActionResult> Details(int Id)
         {
-            return View();
+            Order order = await _db.Orders.FindAsync(Id);
+            if(order != null)
+            {
+                return PartialView("Details", order);
+            }
+            return View("Order");
+        }
+
+        public IActionResult Create()
+        {
+            return PartialView("Create");
         }
 
         [HttpPost]
-        public IActionResult Create(Order order)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Order order)
         {
-            if (order != null)
+            if(order != null)
             {
-                _db.Orders.Add(order);
-                _db.SaveChanges();
-                return RedirectToAction("Order");
+                await _db.Orders.AddAsync(order);
+                await _db.SaveChangesAsync();
+                return View("Order");
             }
-            return RedirectToAction("Order");
+            return View("Error");
         }
     }
 }

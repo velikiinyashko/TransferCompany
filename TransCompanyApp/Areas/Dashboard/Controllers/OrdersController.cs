@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TransCompanyApp.Areas.Dashboard.Controllers
 {
+    [Area("Dashboard")]
     public class OrdersController : Controller
     {
         private BaseContext _db;

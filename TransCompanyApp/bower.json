@@ -5,7 +5,9 @@
     "bootstrap": "v4.0.0-beta",
     "jquery": "3.2.1",
     "jquery-validation": "1.17.0",
-    "jquery-validation-unobtrusive": "3.2.6"
+    "jquery-validation-unobtrusive": "3.2.6",
+    "popper.js": "v1.13.0-next",
+    "jquery-ui": "jquery.ui#1.12.1"
   },
   "resolutions": {
     "bootstrap": "v4.0.0-beta",
